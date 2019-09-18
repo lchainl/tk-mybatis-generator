@@ -1,0 +1,39 @@
+package ${corePackage}.entity;
+
+import lombok.Data;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
+
+#if(${hasBigDecimal})
+import java.math.BigDecimal;
+#end
+
+
+/**
+ * ${comments}
+ * 
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Table(name = "${tableName}")
+@Data
+public class ${className} implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
+#foreach ($column in $columns)
+
+	#if($column.columnName != $pk.columnName || $pk.extra != 'auto_increment')
+//$column.comments
+    @Column(name = "$column.columnName")
+    private $column.attrType $column.attrname;
+	#end
+
+	#if($column.columnName == $pk.columnName && $pk.extra == 'auto_increment')
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+    private $column.attrType $column.attrname;
+	#end#end
+
+}

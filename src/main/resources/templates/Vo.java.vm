@@ -1,0 +1,26 @@
+package ${corePackage}.vo;
+
+import lombok.Data;
+import com.lchainl.base.vo.BaseVo;
+import java.io.Serializable;
+
+#if(${hasBigDecimal})
+#end
+
+
+/**
+ * ${comments}
+ * 
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Data
+public class ${className}Vo implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
+#foreach ($column in $columns)
+	//$column.comments
+	private $column.attrType $column.attrname;
+#end
+}

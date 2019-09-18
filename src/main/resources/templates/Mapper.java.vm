@@ -1,0 +1,17 @@
+package ${corePackage}.dao;
+
+import ${corePackage}.entity.${className};
+
+import com.lchainl.common.mapper.MyBaseMapper;
+
+/**
+ * ${comments}
+ * 
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Mapper
+public interface ${className}Mapper extends MyBaseMapper<${className}> {
+
+}

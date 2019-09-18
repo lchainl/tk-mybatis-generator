@@ -1,0 +1,90 @@
+package ${apiPackage}.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import com.github.pagehelper.PageInfo;
+import com.common.annotation.LoginUser;
+import org.springframework.web.bind.annotation.*;
+import ${corePackage}.vo.${className}Vo;
+import ${corePackage}.service.${className}Service;
+import com.common.utils.R;
+
+/**
+ * ${comments}
+ * 
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+ 
+@Controller
+@RequestMapping("/${apiPathName}/${classname}")
+public class ${className}Controller {
+	@Autowired
+	private ${className}Service ${classname}Service;
+
+	@ResponseBody
+	@PostMapping("/list")
+	public R list(@RequestBody ${className}Vo ${classname}Vo){
+		//分页查询列表数据
+        PageInfo<${className}Vo> pageInfo = ${classname}Service.list(${classname}Vo);
+        return R.ok().put("data",pageInfo);
+	}
+
+    /**
+     * 根据ID获取详情
+     */
+    @ResponseBody
+    @GetMapping("/info/{${pk.attrname}}")
+    public R info( @PathVariable("${pk.attrname}") ${pk.attrType} ${pk.attrname}){
+        return R.ok().put("data",${classname}Service.get(${pk.attrname}));
+    }
+
+	/**
+	 * 保存
+	 */
+	@ResponseBody
+	@PostMapping("/save")
+	public R save( ${className}Vo ${classname}Vo){
+		if(${classname}Service.save(${classname}Vo)>0){
+			return R.ok();
+		}
+		return R.error();
+	}
+
+	/**
+	 * 修改
+	 */
+	@ResponseBody
+	@RequestMapping("/update")
+	public R update(${className}Vo ${classname}Vo){
+        ${classname}Service.update(${classname}Vo);
+		return R.ok();
+	}
+	
+	/**
+	 * 删除
+	 */
+	@PostMapping( "/remove")
+	@ResponseBody
+	public R remove(${pk.attrType} ${pk.attrname}){
+        if(${pk.attrname} != null && ${classname}Service.remove(${pk.attrname})>0){
+            return R.ok();
+        }
+        return R.error();
+	}
+	
+	/**
+	 * 删除
+	 */
+	@PostMapping( "/batchRemove")
+	@ResponseBody
+	public R remove( @RequestParam("ids[]") ${pk.attrType}[] ${pk.attrname}s){
+        if(${pk.attrname}s != null && ${pk.attrname}s.length > 0) {
+            ${classname}Service.batchRemove(${pk.attrname}s);
+            return R.ok();
+        }
+        return R.error();
+	}
+	
+}

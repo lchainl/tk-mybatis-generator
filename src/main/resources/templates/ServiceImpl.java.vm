@@ -1,0 +1,69 @@
+package ${corePackage}.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import java.util.List;
+import com.lchainl.common.utils.BeanMapperUtil;
+import ${corePackage}.dao.${className}Mapper;
+import ${corePackage}.entity.${className};
+import ${corePackage}.vo.${className}Vo;
+import ${corePackage}.service.${className}Service;
+
+
+
+@Service
+public class ${className}ServiceImpl implements ${className}Service {
+	@Autowired
+	private ${className}Mapper ${classname}Mapper;
+	
+	@Override
+	public ${className}Vo get(${pk.attrType} ${pk.attrname}){
+		${className} ${classname} = new ${className}();
+        ${classname}.setId(${pk.attrname});
+		${classname} = ${classname}Mapper.selectByPrimaryKey(${pk.attrname});
+        return BeanMapperUtil.map(${classname},${className}Vo.class);
+	}
+
+    @Override
+    public ${className}Vo selectOne(${className}Vo ${classname}Vo){
+		${className} ${classname} = ${classname}Mapper.selectOne(BeanMapperUtil.map(${classname}Vo,${className}.class));
+        return BeanMapperUtil.map(${classname},${className}Vo.class);
+    }
+
+	@Override
+	public PageInfo<${className}Vo> list(${className}Vo ${classname}Vo){
+		PageHelper.startPage(${classname}Vo.getPage(), ${classname}Vo.getPageSize());
+		List list = ${classname}Mapper.select(BeanMapperUtil.map(${classname}Vo,${className}.class));
+        PageInfo<${className}Vo> pageInfo = new PageInfo<>(list);
+//		pageInfo.setList(BeanMapperUtil.mapList(pageInfo.getList(),${className}Vo.class));
+        return pageInfo;
+	}
+	
+	@Override
+	public int count(${className}Vo ${classname}Vo){
+		return ${classname}Mapper.selectCount(BeanMapperUtil.map(${classname}Vo,${className}.class));
+	}
+	
+	@Override
+	public int save(${className}Vo ${classname}Vo){
+        return  ${classname}Mapper.insertSelective(BeanMapperUtil.map(${classname}Vo,${className}.class));
+	}
+	
+	@Override
+	public int update(${className}Vo ${classname}Vo){
+        return ${classname}Mapper.updateByPrimaryKeySelective(BeanMapperUtil.map(${classname}Vo,${className}.class));
+	}
+	
+	@Override
+	public int remove(${pk.attrType} ${pk.attrname}){
+		return ${classname}Mapper.remove(${pk.attrname});
+	}
+	
+	@Override
+	public int batchRemove(${pk.attrType}[] ${pk.attrname}s){
+		return ${classname}Mapper.batchRemove(${pk.attrname}s);
+	}
+
+}

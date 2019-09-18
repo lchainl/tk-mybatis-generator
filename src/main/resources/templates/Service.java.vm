@@ -1,0 +1,30 @@
+package ${corePackage};
+
+import ${corePackage}.vo.${className}Vo;
+import com.github.pagehelper.PageInfo;
+
+/**
+ * ${comments}
+ * 
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+public interface ${className}Service {
+	
+	${className}Vo get(${pk.attrType} ${pk.attrname});
+
+	${className}Vo selectOne(${className}Vo ${classname}Vo);
+
+    PageInfo<${className}Vo> list(${className}Vo ${classname}Vo);
+	
+	int count(${className}Vo ${classname}Vo);
+	
+	int save(${className}Vo ${classname}Vo);
+	
+	int update(${className}Vo ${classname}Vo);
+	
+	int remove(${pk.attrType} ${pk.attrname});
+	
+	int batchRemove(${pk.attrType}[] ${pk.attrname}s);
+}
