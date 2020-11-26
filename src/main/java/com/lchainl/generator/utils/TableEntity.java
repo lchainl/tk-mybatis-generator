@@ -144,7 +144,7 @@ public class TableEntity implements Serializable {
 
     public void addColumn(ColumnEntity columnEntity) {
         if (this.columns == null) {
-            columns = new ArrayList<>();
+            columns = new ArrayList();
         }
         columns.add(columnEntity);
     }

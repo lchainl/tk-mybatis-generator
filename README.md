@@ -35,6 +35,8 @@ mybatis自动生成工具，集成tk-mybatis，可以通过接口访问，也可
     接口2 根据表名生成自动代码: http://localhost:9001/generator/{tableName}
   
     接口3 根据多个表名批量生成代码：http://localhost:9001/generator/batchCode?tables=
+    
+    接口4 批量生成所有表代码：http://localhost:9001/generator/allTables
 
 ## 4:生成后的代码结构
 

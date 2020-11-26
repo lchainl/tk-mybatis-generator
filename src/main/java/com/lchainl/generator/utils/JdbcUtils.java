@@ -77,7 +77,7 @@ public class JdbcUtils {
      * @throws SQLException
      */
     public List<Map> selectByParams(String sql, List params) throws SQLException {
-        List<Map> list = new ArrayList<>();
+        List<Map> list = new ArrayList();
         int index = 1;
         pstmt = conn.prepareStatement(sql);
         if (null != params && !params.isEmpty()) {

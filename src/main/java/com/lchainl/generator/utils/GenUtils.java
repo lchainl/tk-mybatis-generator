@@ -58,7 +58,7 @@ public class GenUtils {
         tableDO.setClassname(StringUtils.uncapitalize(className));
         boolean hasBigDecimal = false;
         //列信息
-        List<ColumnDO> columsList = new ArrayList<>();
+        List<ColumnDO> columsList = new ArrayList();
         for (Map<String, String> column : columns) {
             ColumnDO columnDO = new ColumnDO();
             columnDO.setColumnName(column.get("columnName"));
@@ -98,7 +98,7 @@ public class GenUtils {
         Velocity.init(prop);
 
         //封装模板数据
-        Map<String, Object> map = new HashMap<>(16);
+        Map<String, Object> map = new HashMap(16);
         map.put("tableName", tableDO.getTableName());
         map.put("comments", tableDO.getComments());
         map.put("pk", tableDO.getPk());

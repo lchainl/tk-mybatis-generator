@@ -35,7 +35,7 @@ public class JdbcGenUtils {
         List<Map> tableList = jdbcUtils.selectByParams(tableSql, null);
 
         TableEntity table = null;
-        List<TableEntity> tables = new ArrayList<>();
+        List<TableEntity> tables = new ArrayList();
         String classPrefix = "";
         if (mode.equals("biz")) {
             classPrefix = "Admin";//设置前缀避免组件名字重名冲突
@@ -99,7 +99,7 @@ public class JdbcGenUtils {
         Map<String, Object> map = null;
         for (TableEntity tableEntity : tables) {
             // 封装模板数据
-            map = new HashMap<>(16);
+            map = new HashMap(16);
             String tableNameNoPrefix = tableEntity.getTableName().replaceFirst(tablePrefix, "");
             map.put("tableName", tableEntity.getTableName());
             map.put("comments", tableEntity.getTableComment());
