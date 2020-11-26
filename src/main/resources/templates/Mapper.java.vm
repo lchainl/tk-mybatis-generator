@@ -2,7 +2,8 @@ package ${corePackage}.dao;
 
 import ${corePackage}.entity.${className};
 
-import com.lchainl.common.mapper.MyBaseMapper;
+import tk.mybatis.mapper.common.Mapper;
+import tk.mybatis.mapper.common.MySqlMapper;
 
 /**
  * ${comments}
@@ -11,7 +12,7 @@ import com.lchainl.common.mapper.MyBaseMapper;
  * @email ${email}
  * @date ${datetime}
  */
-@Mapper
-public interface ${className}Mapper extends MyBaseMapper<${className}> {
+@org.apache.ibatis.annotations.Mapper
+public interface ${className}Mapper extends Mapper<${className}>, MySqlMapper<${className}> {
 
 }

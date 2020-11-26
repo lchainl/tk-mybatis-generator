@@ -56,4 +56,36 @@ mybatis自动生成工具，集成tk-mybatis，可以通过接口访问，也可
         -- mybatis # Mapper文件路径
           -- core
     
-  
+### 5:代码生成后，需要依赖的 jar 包
+    <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis</artifactId>
+        <version>3.4.4</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>1.16.14</version>
+    </dependency>
+
+    <dependency>
+        <groupId>tk.mybatis</groupId>
+        <artifactId>mapper-spring-boot-starter</artifactId>
+        <version>2.1.5</version>
+    </dependency>
+
+    <dependency>
+        <groupId>com.github.pagehelper</groupId>
+        <artifactId>pagehelper-spring-boot-starter</artifactId>
+        <version>1.2.5</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+        <version>2.2.4.RELEASE</version>
+    </dependency>  
+
+### 备注
+    部分 Controller 和 Service 代码生成后，需要开发人员根据自己情况进行调整

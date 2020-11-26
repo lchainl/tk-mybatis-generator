@@ -55,15 +55,4 @@ public class ${className}ServiceImpl implements ${className}Service {
 	public int update(${className}Vo ${classname}Vo){
         return ${classname}Mapper.updateByPrimaryKeySelective(BeanMapperUtil.map(${classname}Vo,${className}.class));
 	}
-	
-	@Override
-	public int remove(${pk.attrType} ${pk.attrname}){
-		return ${classname}Mapper.remove(${pk.attrname});
-	}
-	
-	@Override
-	public int batchRemove(${pk.attrType}[] ${pk.attrname}s){
-		return ${classname}Mapper.batchRemove(${pk.attrname}s);
-	}
-
 }
